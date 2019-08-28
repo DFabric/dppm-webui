@@ -1,69 +1,24 @@
-*Psst  looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# DPPM Web UI
+### Svelte version
+#### (*under construction*)
 
----
+A Web UI for the Dedicated Platform Package Manager, built on the Svelte platform
 
-# svelte app
-
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
+### Building for development
 ```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
+# PREREQUISITE: Install and configure the DPPM REST Server
+# see https://github.com/DFabric/dppm-rest-api/blob/master/scripts/setup-for-manual-testing.sh
+# for an example of how to get set up.
+git clone git@github.com:DFabric/web-ui-svelte.git
+cd web-ui-svelte
+yarn install
+dppm server run webui_folder=$PWD/public & # <run in the background
+yarn autobuild &
+firefox --new-tab localhost:8994/index.html
+# Edit the interface as you please.
 ```
+In this scenario, the autobuild script will watch your files for changes, while the
+DPPM application serves up the auto-built files.
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
-```
-
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-now
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public
-```
+### Building For Deployment
+Should be the same as for development, but with `build` instead of autobuild.
