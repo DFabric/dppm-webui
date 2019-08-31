@@ -2314,10 +2314,10 @@ jsonify@~0.0.0:
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
   integrity sha1-LHS27kHZPKUbe1qu6PUDYx0lKnM=
 
-kemal_jwt_auth_companion@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/kemal_jwt_auth_companion/-/kemal_jwt_auth_companion-1.2.1.tgz#c492a4109f3917f2784e1ee056914bbc115a4565"
-  integrity sha512-jfqKZAUW68ryQBQoRjlIqWGLhPNK28y9f2bfnDDgyrvPKop/md6TBwpuX8JEL+sBGr34mskcWbfmnHqYwFkFJg==
+kemal_jwt_auth_companion@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/kemal_jwt_auth_companion/-/kemal_jwt_auth_companion-1.2.2.tgz#6deb857244410a447d12d5cfe45b02a6722b65f2"
+  integrity sha512-GtgKLntItdyRoKfL3cDnHY9rAGKIyUL79FB+iukJ3MM8xnSxs8P+SjLGMyn5RCiuG5MTDV3XyA64LuKppQuKxA==
   dependencies:
     "@babel/core" "^7.3.4"
     "@babel/preset-env" "^7.3.4"

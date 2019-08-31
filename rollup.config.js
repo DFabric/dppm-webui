@@ -1,4 +1,3 @@
-import proxy from 'express-http-proxy'
 import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import resolve from 'rollup-plugin-node-resolve';
