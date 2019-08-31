@@ -15,7 +15,7 @@
   // Auto-login for testing
   login(
     null,
-    "axnsO+BeaFTn0vpVpBJOUrotugTjjf1X2xs+/cvukz7jro+Uwy3BqgEPao0JhHvw2JVQdlp9f10APNzai1VN"
+    "4FB6QST5JBf4tuvENcGe+75rqK65E5E/57BgggyALkJqvc0nKWwFndUCKS/IRehPXdoXz8XzLFzbUXQdfOxQ"
   )
     .then(t => {
       keepToken(t);

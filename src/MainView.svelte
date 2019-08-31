@@ -1,6 +1,15 @@
 <script>
+  import Navbar from "./Navbar.svelte";
   import { authFetch } from "./login";
   let me;
+  const resetDisplay = () => (path = defaultNavbarPath);
+  export const defaultNavbarPath = [
+    {
+      title: "DPPM",
+      OnClick: resetDisplay
+    }
+  ];
+  let path = defaultNavbarPath;
   authFetch("/user/me")
     .then(response => {
       if (!response.ok) {
@@ -17,4 +26,5 @@
     );
 </script>
 
+<Navbar user={me} {path} />
 {#if me}Welcome, {me.name}!{:else}Loading...{/if}
