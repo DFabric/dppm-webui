@@ -1,15 +1,15 @@
 <script>
+  import { writable } from "svelte/store";
   import Navbar from "./Navbar.svelte";
   import { authFetch } from "./login";
+  import { validatePath } from "./validation";
+  import { pathActions, path as pathStore, pathNames } from "./store/path";
   let me;
-  const resetDisplay = () => (path = defaultNavbarPath);
-  export const defaultNavbarPath = [
-    {
-      title: "DPPM",
-      OnClick: resetDisplay
-    }
-  ];
-  let path = defaultNavbarPath;
+  const resetDisplay = pathNames.update(current => [current[0]]);
+  pathActions.update(current => ({
+    ...current,
+    DPPM: resetDisplay
+  }));
   authFetch("/user/me")
     .then(response => {
       if (!response.ok) {
@@ -26,5 +26,4 @@
     );
 </script>
 
-<Navbar user={me} {path} />
-{#if me}Welcome, {me.name}!{:else}Loading...{/if}
+<Navbar user={me} {pathStore} />

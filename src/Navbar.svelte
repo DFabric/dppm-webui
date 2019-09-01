@@ -1,10 +1,15 @@
 <script>
   import Burger from "./Navbar/Burger.svelte";
-  export let user, path;
+  export let user, pathStore;
+  let path;
+  pathStore.subscribe(newPath => (path = newPath));
   $: endOfPath = path[path.length - 1];
+  // insert the appropriate padding for the fixed-position navbar. See
+  // https://bulma.io/documentation/components/navbar/#fixed-navbar
+  document.getElementsByTagName("body")[0].className = "has-navbar-fixed-top";
 </script>
 
-<div class="navbar is-dark">
+<div class="navbar is-dark is-fixed-top">
   <div class="navbar-brand">
     <a class="navbar-item" href="/index.html">
       <img src="/logo.png" alt="DPPM" />
@@ -19,12 +24,12 @@
             {#if path.length > 1}
               {#each path.slice(0, path.length - 1) as p}
                 <li>
-                  <div on:click={p.OnClick}>{p.title}</div>
+                  <div on:click={p.action}>{p.name}</div>
                 </li>
               {/each}
             {/if}
-            <li>
-              <div on:click={endOfPath.OnClick}>{endOfPath.title}</div>
+            <li class="is-active">
+              <div>{endOfPath.name}</div>
             </li>
           </ul>
         </nav>
