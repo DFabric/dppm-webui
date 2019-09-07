@@ -1,23 +1,24 @@
 <script>
   import { activeMenuItem } from "./store/menu";
-  import Category from "./Menu/Category";
   import Heading from "./Menu/Heading.svelte";
-  const categories = [
-    new Category("Applications", () => activeMenuItem.set("Applications")),
-    new Category("Packages", () => activeMenuItem.set("Packages")),
-    new Category("Sources", () => activeMenuItem.set("Sources")),
-    new Category("Services", () => activeMenuItem.set("Services")),
-    new Category("Users", () => activeMenuItem.set("Users"), [
-      new Category("Add", () => activeMenuItem.set("Users::Add"))
-    ]),
-    new Category("Groups", () => activeMenuItem.set("Groups"))
-  ];
+  import SubHeadings from "./Menu/SubHeadings.svelte";
+  import SubHeading from "./Menu/SubHeading.svelte";
+  const setActive = (item, depth = 0) => activeMenuItem.set({ item, depth });
 </script>
 
 <aside class="menu">
   <ul class="menu-list">
-    {#each categories as category}
-      <Heading {...category} />
-    {/each}
+    <Heading text="Applications" action={() => setActive('Applications')} />
+    <Heading text="Packages" action={() => setActive('Packages')} />
+    <Heading text="Sources" action={() => setActive('Sources')} />
+    <Heading text="Services" action={() => setActive('Services')} />
+    <Heading text="Users" action={() => setActive('Users')}>
+      <SubHeadings>
+        <SubHeading
+          text="Add"
+          action={() => setActive('Users::Add', 1)}
+          depth="1" />
+      </SubHeadings>
+    </Heading>
   </ul>
 </aside>

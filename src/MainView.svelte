@@ -28,4 +28,13 @@
 </script>
 
 <Navbar user={me} {pathStore} />
-<Menu />
+<div class="section">
+  <div class="columns">
+    <div class="column is-2">
+      <Menu />
+    </div>
+    <div class="column">
+      <h1 class="title">Main Content...</h1>
+    </div>
+  </div>
+</div>

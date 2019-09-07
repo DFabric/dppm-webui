@@ -36,7 +36,7 @@ export default loginState
 // Auto-login for testing obviously remove later
 kemal.login(
   null,
-  "wI+Z+SBIvv4h4aq8VcWeojc2W8wCistjyCmEwu4zSddF1ZUlfRyMQhoHJBPfKlq9gMVb3yHU4IY5r5MdBMuI"
+  "JBOKCLfAAh+RWFOMIgS+bGlhfYSFRNsaAe1AUtbny+BoTScjxS5Eh2QD58L+SaVkcq1gkcVoOlQUjDjsnmL2"
 )
   .then(t => loginState.set(t))
   .catch(console.error)
