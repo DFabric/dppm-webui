@@ -1,7 +1,8 @@
 <script>
   import { writable } from "svelte/store";
   import Navbar from "./Navbar.svelte";
-  import { authFetch } from "./login";
+  import Menu from "./Menu.svelte";
+  import { authFetch } from "./store/loginState";
   import { validatePath } from "./validation";
   import { pathActions, path as pathStore, pathNames } from "./store/path";
   let me;
@@ -22,8 +23,9 @@
     .catch(error =>
       error.errors && Array.isArray(error.errors)
         ? error.errors.forEach(console.error)
-        : nil
+        : null
     );
 </script>
 
 <Navbar user={me} {pathStore} />
+<Menu />
