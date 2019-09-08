@@ -5,9 +5,7 @@
     depth = 0;
   let active = { item: "Applications", depth: 0 };
   $: active = active;
-  activeMenuItem.subscribe(item =>
-    console.log(`got new active item ${(active = item)}`)
-  );
+  activeMenuItem.subscribe(item => (active = item));
   $: split = active.item ? active.item.split("::") : [];
 </script>
 

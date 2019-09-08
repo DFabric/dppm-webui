@@ -10,7 +10,6 @@
   <ul class="menu-list">
     <Heading text="Applications" action={() => setActive('Applications')} />
     <Heading text="Packages" action={() => setActive('Packages')} />
-    <Heading text="Sources" action={() => setActive('Sources')} />
     <Heading text="Services" action={() => setActive('Services')} />
     <Heading text="Users" action={() => setActive('Users')}>
       <SubHeadings>
