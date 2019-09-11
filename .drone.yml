@@ -1,0 +1,13 @@
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  image: node:current-alpine
+  commands:
+  - yarn install
+  - yarn build
