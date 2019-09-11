@@ -1,4 +1,7 @@
-# DPPM Web UI
+# DPPM WebUI
+
+[![ISC](https://img.shields.io/badge/License-ISC-blue.svg?style=flat-square)](https://en.wikipedia.org/wiki/ISC_license)
+
 ### Svelte version
 #### (*under construction*)
 
@@ -22,3 +25,7 @@ DPPM application serves up the auto-built files.
 
 ### Building For Deployment
 Should be the same as for development, but with `build` instead of autobuild.
+
+## License
+
+Copyright (c) 2018-2019 DFabric members - ISC License
