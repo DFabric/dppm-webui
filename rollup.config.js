@@ -42,5 +42,10 @@ export default {
         // instead of npm run dev), minify
         production && terser()
       ],
-  watch: {clearScreen: false}
+  watch: {clearScreen: false},
+
+  // Throw error on warning in production
+  onwarn: warning => {
+    if (production) { throw new Error(warning.message) };
+  }
 };

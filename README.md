@@ -23,6 +23,8 @@ Watch and recompile the files at changes:
 
 `yarn build`
 
+Warnings are thrown as errors when building in production.
+
 ## License
 
 Copyright (c) 2018-2019 DFabric members - ISC License

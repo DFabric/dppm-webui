@@ -2,8 +2,8 @@ import { writable } from 'svelte/store'
 
 import Kemal from 'kemal_jwt_auth_companion'
 
-// TODO make dependent on envvar at compile time if possible?
-const host = "http://localhost:8994/";
+// TODO make it configurable through a config.js file at runtime
+const host = "http://[::1]:8994/";
 
 const kemal = Kemal(host)
 
