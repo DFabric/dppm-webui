@@ -1,30 +1,27 @@
-# DPPM WebUI
+# DPPM Web UI
 
+[![Gitter](https://img.shields.io/badge/chat-on_gitter-red.svg?style=flat-square)](https://gitter.im/DFabric/Lobby)
 [![ISC](https://img.shields.io/badge/License-ISC-blue.svg?style=flat-square)](https://en.wikipedia.org/wiki/ISC_license)
 
-### Svelte version
-#### (*under construction*)
+A Web UI for the Dedicated Platform Package Manager, built on the [Svelte](https://svelte.dev/) platform.
 
-A Web UI for the Dedicated Platform Package Manager, built on the Svelte platform
+This is only the web client of DPPM:
+- For the server, look at https://github.com/DFabric/dppm-rest-api.
+- To setup both the API server and the Web UI, look at https://github.com/DFabric/dppm-integration.
 
-### Building for development
-```bash
-# PREREQUISITE: Install and configure the DPPM REST Server
-# see https://github.com/DFabric/dppm-rest-api/blob/master/scripts/setup-for-manual-testing.sh
-# for an example of how to get set up.
-git clone git@github.com:DFabric/web-ui-svelte.git
-cd web-ui-svelte
-yarn install
-dppm server run webui_folder=$PWD/public & # <run in the background
-yarn autobuild &
-firefox --new-tab localhost:8994/index.html
-# Edit the interface as you please.
-```
-In this scenario, the autobuild script will watch your files for changes, while the
-DPPM application serves up the auto-built files.
+## Development
 
-### Building For Deployment
-Should be the same as for development, but with `build` instead of autobuild.
+Install package dependencies:
+
+`yarn install`
+
+Watch and recompile the files at changes:
+
+`yarn dev`
+
+## Production build
+
+`yarn build`
 
 ## License
 
