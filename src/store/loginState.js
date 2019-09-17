@@ -20,23 +20,28 @@ const loginState = writable(AuthCookie())
 
 export const login = event => {
   return new Promise((resolve, reject) => {
-    const authToken = event.detail
-    fetch(host + 'sign_in', { method: 'POST', body: JSON.stringify(data) })
+    const auth = event.detail
+    fetch(host + 'sign_in', { method: 'POST', body: JSON.stringify({ user: null, auth }) })
       .then(response => response.json().catch(() => response.text().then(errors => { errors })))
       .then(({ errors, token }) => {
-        if (errors) {
-          if (Array.isArray(errors))
+        if (errors && Array.isArray(errors)) {
+          if (errors.length) {
             errors.forEach(error => notify({ message: error, kind: "danger" }))
-          else
-            notify({ message: error, kind: "danger" })
+            reject(errors)
+          }
+        } else if (errors) {
+          notify({ message: errors, kind: "danger" })
           reject(errors)
         }
         return loginState.set(token)
-      }).then(resolve).catch(reject)
+      })
+      .then(resolve)
+      .catch(reject)
   })
 }
 
 let current_jwt = null
+
 loginState.subscribe(token => {
   document.cookie = `auth=${token};samesite=strict;secure;max-age=${days(7)}`
   current_jwt = token
@@ -56,4 +61,4 @@ export default loginState
 
 
 // Auto-login for testing obviously remove later
-login({ detail: "jV35u/fLV7EkuXkI0i6ymoMR9p8HNUJ2z9JGdFuHPppWXtraUvFHHzeOd1jLL9ysNBM5A9goJZqWNkyRCKMc" })
+login({ detail: "a1BzfQuEih9dvDPGdrT0lja79kkKMoHy/H1hJSCm1epeiIE7D9yBGsCKDn95ksDORpT6C0GEG5uU1NiPy8yC" }).catch(console.error)
