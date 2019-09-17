@@ -1,5 +1,6 @@
 <script>
   import MainView from "./MainView.svelte";
+  import Notifications from "./Notifications.svelte";
   import LoginForm from "./LoginForm.svelte";
   import { login } from "./store/loginState";
   import loginState from "./store/loginState";
@@ -7,6 +8,7 @@
   loginState.subscribe(token => (loggedIn = token));
 </script>
 
+<Notifications />
 {#if loggedIn}
   <MainView />
 {:else}
