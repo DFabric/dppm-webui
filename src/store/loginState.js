@@ -2,7 +2,8 @@ import { writable } from 'svelte/store'
 import { notify } from './notifications'
 
 // TODO make it configurable through a config.js file at runtime
-const host = "http://[::1]:8994/";
+//const host = "http://[::1]:8994/";
+const host = API_BASE_URL;
 
 const AuthCookie = () => {
   const split = document.cookie.split(';')
