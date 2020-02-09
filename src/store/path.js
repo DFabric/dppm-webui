@@ -7,12 +7,12 @@ export const pathNames = writable(['DPPM']);
 export const pathActions = writable({});
 
 export const path = derived([pathNames, pathActions], ([names, actions]) => {
-    let out = [];
-    names.forEach(name => {
-        const action = actions[name] || (
-            () => console.error(`no action associated with path member "${name}"`)
-        );
-        out.push({ name, action });
-    });
-    return out;
+  let out = [];
+  names.forEach(name => {
+    const action = actions[name] || (
+      () => console.error(`no action associated with path member "${name}"`)
+    );
+    out.push({ name, action });
+  });
+  return out;
 });
