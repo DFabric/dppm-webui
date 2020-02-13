@@ -4,7 +4,7 @@ async function send ({ method, path, data, token }) {
   try {
     const response = await axios({
       method,
-      baseURL: process.env.API_BASE_URL,
+      baseURL: API_BASE_URL,
       url: path,
       data,
       headers: {

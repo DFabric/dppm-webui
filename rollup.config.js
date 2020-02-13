@@ -4,7 +4,6 @@ import resolve from 'rollup-plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
 import {terser} from 'rollup-plugin-terser';
 import replace from '@rollup/plugin-replace';
-import json from '@rollup/plugin-json';
 
 const production = !process.env.ROLLUP_WATCH;
 
