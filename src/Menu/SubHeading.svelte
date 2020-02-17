@@ -11,6 +11,7 @@
 
 <li>
   <a
+    href="javascript:void(0);"
     class:is-active={split[Number(depth)] == text && active.depth == depth}
     on:click={action}>
     {text}

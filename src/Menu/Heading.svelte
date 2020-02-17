@@ -11,6 +11,7 @@
 
 <li class="menu-label">
   <a
+    href="javascript:void(0);"
     on:click={action}
     class:is-active={split[depth] == text && active.depth == depth}>
     {text}

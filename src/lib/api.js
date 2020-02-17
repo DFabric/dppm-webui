@@ -4,7 +4,7 @@ async function send ({ method, path, data, token }) {
   try {
     const response = await axios({
       method,
-      baseURL: API_BASE_URL,
+      // baseURL: `${location.protocol}//${location.hostname}:5000`,
       url: path,
       data,
       headers: {

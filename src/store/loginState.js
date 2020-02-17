@@ -62,5 +62,3 @@ export const authFetch = (input, init) => {
 export default loginState;
 
 
-// Auto-login for testing obviously remove later
-login({ detail: 'a1BzfQuEih9dvDPGdrT0lja79kkKMoHy/H1hJSCm1epeiIE7D9yBGsCKDn95ksDORpT6C0GEG5uU1NiPy8yC' }).catch(console.error);
