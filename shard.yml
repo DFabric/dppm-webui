@@ -1,0 +1,9 @@
+name: dppm-webui
+version: 0.1.0
+crystal: 0.33.0
+path: src/crystal
+dependencies:
+  jwt:
+    github: crystal-community/jwt
+  kemal:
+    github: kemalcr/kemal
