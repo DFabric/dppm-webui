@@ -2,13 +2,17 @@
   import { Form, Input } from "sveltejs-forms";
   import { post } from "./lib/api";
   import * as yup from "yup";
-  const handleSubmit = ({detail: { values, setSubmitting }}) => {
+  import { session } from "stores";
+  const handleSubmit = async ({detail: { values, setSubmitting }}) => {
       setSubmitting(false)
-      post("/sign_in", values)
+      const response = await post("/sign_in", values)
+      if (response.token) {
+        $session.user = {...values, token: response.token}
+      }
     }
   const schema = yup.object().shape({
-    username: yup.string().required().min(3),
-    password: yup.string().required().min(4)
+    name: yup.string().required().min(3),
+    auth: yup.string().required().min(10)
   });
 </script>
 
@@ -17,8 +21,8 @@
   <div class="modal-content columns">
     <div class="column is-2">
       <Form {schema} on:submit={handleSubmit} let:isSubmitting >
-        <Input name="username" placeholder="Username" />
-        <Input name="password" placeholder="Password" />
+        <Input name="name" placeholder="Username" />
+        <Input name="auth" placeholder="API Key" />
         <button type="submit" disabled={isSubmitting}>Sign in</button>
       </Form>
     </div>

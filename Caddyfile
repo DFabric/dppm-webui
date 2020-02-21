@@ -1,0 +1,9 @@
+{$HOSTNAME}:2015 {
+  tls off
+  root "public"
+  log "logs/access.log"
+  gzip
+  proxy /api {$API_UPSTREAM}:8994 {
+    without /api
+  }
+}

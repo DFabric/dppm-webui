@@ -5,7 +5,7 @@ async function send ({ method, path, data, token }) {
     const response = await axios({
       method,
       // baseURL: `${location.protocol}//${location.hostname}:5000`,
-      url: path,
+      url: 'api' + path,
       data,
       headers: {
         ...(token ? { Authorization: `Bearer ${token}` } : {})
