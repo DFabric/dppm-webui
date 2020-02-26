@@ -1,14 +1,13 @@
 <script type="application/javascript">
   import { Form, Input } from "sveltejs-forms";
-  import { post } from "./lib/api";
+  import { login, redirect } from "./lib/api";
   import * as yup from "yup";
-  import { session } from "stores";
-  const handleSubmit = async ({detail: { values, setSubmitting }}) => {
+  import { Session } from "svelte-session-manager";
+  const handleSubmit = async ({detail: { values: { user, auth }, setSubmitting }}) => {
       setSubmitting(false)
-      const response = await post("/sign_in", values)
-      if (response.token) {
-        $session.user = {...values, token: response.token}
-      }
+      login(session, { user, auth }).then(
+        redirect('/')
+      )
     }
   const schema = yup.object().shape({
     name: yup.string().required().min(3),

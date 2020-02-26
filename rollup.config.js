@@ -49,6 +49,6 @@ export default {
 
   // Throw error on warning in production
   onwarn: warning => {
-    if (production) { throw new Error(warning.message); }
+    if (production && !/A11y:/.test(warning.message)) { throw new Error(warning.message); }
   }
 };

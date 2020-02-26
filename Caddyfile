@@ -1,9 +1,13 @@
-{$HOSTNAME}:2015 {
+{$HOSTNAME}:80 {
   tls off
   root "public"
   log "logs/access.log"
+  errors "logs/errors.log"
   gzip
   proxy /api {$API_UPSTREAM}:8994 {
     without /api
+  }
+  rewrite {
+    to {path} {path}/ /index.html#{uri}
   }
 }

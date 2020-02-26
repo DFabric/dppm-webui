@@ -1,40 +1,17 @@
-import axios from 'axios';
+import { post } from './transport';
 
-async function send ({ method, path, data, token }) {
-  try {
-    const response = await axios({
-      method,
-      // baseURL: `${location.protocol}//${location.hostname}:5000`,
-      url: 'api' + path,
-      data,
-      headers: {
-        ...(token ? { Authorization: `Bearer ${token}` } : {})
-      }
-    });
-    return new Promise(resolve => resolve(response.data));
-  } catch (error) {
-    throw error.response.data;
+import { replace } from 'svelte-spa-router';
+
+export async function login(session, user, auth) {
+  const response = await post('api/sign_in', {user, auth});
+  if(response.token) {
+    session.update({username: user, access_token: response.token });
+    return session.save();
+  } else {
+    throw new Error('Could not authenticate.');
   }
 }
 
-export function post (path, data, token = null) {
-  return send({ method: 'post', path, data, token });
-}
+export const logout = async (session) => session.invalidate();
 
-export function put (path, data, token = null) {
-  return send({ method: 'put', path, data, token });
-}
-
-export function del (path, token = null) {
-  return send({ method: 'delete', path, token });
-}
-
-export function get (path, data = {}, token = null) {
-  const params = Object.keys(data).map(key => `${key}=${data[key]}`).join('&');
-  return send({
-    method: 'get',
-    path: `${path}${params ? '?' + params : ''}`,
-    token
-  });
-}
-
+export const redirect = (location) => replace(location);
