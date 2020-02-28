@@ -4,10 +4,11 @@
   log "logs/access.log"
   errors "logs/errors.log"
   gzip
-  proxy /api {$API_UPSTREAM}:8994 {
-    without /api
-  }
   rewrite {
     to {path} {path}/ /index.html#{uri}
   }
+}
+
+{$HOSTNAME}:80/api {
+  proxy / {$API_UPSTREAM}:8994 
 }

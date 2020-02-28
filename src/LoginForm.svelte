@@ -3,9 +3,10 @@
   import { login, redirect } from "./lib/api";
   import * as yup from "yup";
   import { Session } from "svelte-session-manager";
-  const handleSubmit = async ({detail: { values: { user, auth }, setSubmitting }}) => {
+  const session = new Session(localStorage);
+  const handleSubmit = async ({detail: { values: { name, auth }, setSubmitting }}) => {
       setSubmitting(false)
-      login(session, { user, auth }).then(
+      login(session, name, auth).then(
         redirect('/')
       )
     }

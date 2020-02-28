@@ -3,10 +3,12 @@
   import MainView from "./MainView.svelte";
   import Notifications from "./Notifications.svelte";
   import LoginForm from "./LoginForm.svelte";
-  import { login } from "./store/loginState";
-  import loginState from "./store/loginState";
-  let loggedIn = false;
-  loginState.subscribe(token => (loggedIn = token));
+  /* import { login } from "./store/loginState"; */
+  /* import loginState from "./store/loginState"; */
+  /* let loggedIn = false; */
+  /* loginState.subscribe(token => (loggedIn = token)); */
+  import { Session } from 'svelte-session-manager';
+  const session = new Session(localStorage);
   const routes = {
     '/': MainView,
     '/login': LoginForm
@@ -15,8 +17,8 @@
 
 <Notifications />
 <Router {routes} />
-{#if loggedIn}
+{#if session.isValid }
   <MainView />
 {:else}
-  <LoginForm on:submitted={login} ButtonLabel="Log In..." />
+  <LoginForm ButtonLabel="Log In..." />
 {/if}
